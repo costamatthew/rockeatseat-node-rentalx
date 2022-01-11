@@ -5,3 +5,5 @@ interface ICategoryRepository {
     list(): Category[]
     create(name: string, description: string): void
 }
+
+export { ICategoryRepository }
