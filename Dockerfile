@@ -1,6 +1,6 @@
-FROM node:14
-WORKDIR /app
+FROM node
+WORKDIR /usr/app
 EXPOSE 3333
 COPY . .
 RUN npm install
-ENTRYPOINT npm run dev
+CMD ['npm' 'run' 'dev']
