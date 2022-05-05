@@ -6,14 +6,20 @@ import { CategoriesRepository } from '../../modules/cars/repositories/implematat
 import { ISpecificationRepository } from '../../modules/cars/repositories/'
 import { SpecificationRepository } from '../../modules/cars/repositories/implematations/'
 
-// ICategoriesRepository
+import { IUsersRepository } from '../../modules/accounts/repositories/IUsersRepository'
+import { UsersRepository } from '../../modules/accounts/repositories/implementations/UserRepository'
+
 container.registerSingleton<ICategoriesRepository>(
     "CategoriesRepository",
     CategoriesRepository
 )
 
-// ISpecificationRepository
 container.registerSingleton<ISpecificationRepository>(
     "SpecificationRepository",
     SpecificationRepository
+)
+
+container.registerSingleton<IUsersRepository>(
+    "UsersRepository",
+    UsersRepository
 )
