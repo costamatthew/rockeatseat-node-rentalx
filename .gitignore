@@ -4,6 +4,8 @@
 
 # Temp
 temp/
+tmp
+tmp/
 
 ### Node ###
 # Logs
