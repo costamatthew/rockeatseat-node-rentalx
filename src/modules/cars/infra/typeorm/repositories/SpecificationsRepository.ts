@@ -1,8 +1,8 @@
 import { getRepository, Repository } from 'typeorm'
 import { Specification } from '../entities/Specification'
-import { ISpecificationRepository, ICreateSpecificationDTO } from '@modules/cars/repositories'
+import { ISpecificationsRepository, ICreateSpecificationDTO } from '@modules/cars/repositories'
 
-class SpecificationRepository implements ISpecificationRepository {
+class SpecificationsRepository implements ISpecificationsRepository {
     private repository: Repository<Specification>
 
     constructor() {
@@ -26,6 +26,11 @@ class SpecificationRepository implements ISpecificationRepository {
 
         return specification
     }
+
+    async findByIds(ids: string[]): Promise<Specification[]> {
+        const specifications = await this.repository.findByIds(ids)
+        return specifications
+    }
 }
 
-export { SpecificationRepository }
+export { SpecificationsRepository }
