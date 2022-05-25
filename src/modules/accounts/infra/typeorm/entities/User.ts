@@ -22,7 +22,7 @@ class User {
     @Column()
     isAdmin: boolean
 
-    @Column()
+    @Column({ nullable: true })
     avatar: string
     
     @CreateDateColumn()
