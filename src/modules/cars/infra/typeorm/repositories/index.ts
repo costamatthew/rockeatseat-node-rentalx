@@ -1,3 +1,4 @@
 export * from './CategoriesRepository'
-export * from './SpecificationRepository'
+export * from './SpecificationsRepository'
 export * from './CarsRepository'
+export * from './CarsImagesRepository'
