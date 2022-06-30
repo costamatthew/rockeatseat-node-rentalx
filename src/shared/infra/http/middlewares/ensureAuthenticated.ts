@@ -8,7 +8,11 @@ interface IPayload {
     sub: string
 }
 
-export async function ensureAuthenticated(request: Request, response: Response, next: NextFunction) {
+export async function ensureAuthenticated(
+    request: Request,
+    response: Response,
+    next: NextFunction
+) {
     const authHeader = request.headers.authorization
 
     if (!authHeader) {
@@ -29,12 +33,11 @@ export async function ensureAuthenticated(request: Request, response: Response, 
         }
 
         request.user = {
-            id: user_id,
+            id: user_id
         }
 
         next()
     } catch {
         throw new AppError('Invalid token!', 401)
     }
-
 }

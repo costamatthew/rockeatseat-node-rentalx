@@ -20,10 +20,9 @@ interface IResponse {
 
 @injectable()
 class AuthenticateUserUseCase {
-
     constructor(
         @inject('UsersRepository')
-        private usersRepository: IUsersRepository 
+        private usersRepository: IUsersRepository
     ) {}
 
     async execute({ email, password }: IRequest): Promise<IResponse> {
@@ -54,7 +53,6 @@ class AuthenticateUserUseCase {
 
         return tokenReturn
     }
-
 }
 
 export { AuthenticateUserUseCase }

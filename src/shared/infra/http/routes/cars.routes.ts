@@ -2,32 +2,31 @@ import { Router } from 'express'
 import multer from 'multer'
 
 import uploadConfig from '@config/upload'
+import { CreateCarController } from '@modules/cars/useCases/createCar/CreateCarController'
+import { CreateCarSpecificationController } from '@modules/cars/useCases/createCarSpecification/CreateCarSpecificationController'
+import { ListAvailableCarsController } from '@modules/cars/useCases/listAvailableCars/ListAvailableCarsController'
+import { UploadCarImagesController } from '@modules/cars/useCases/uploadCarImages/UploadCarImagesController'
 
 import { ensureAdmin } from '../middlewares/ensureAdmin'
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated'
 
-import { CreateCarController } from '@modules/cars/useCases/createCar/CreateCarController'
-import { ListAvailableCarsController } from '@modules/cars/useCases/listAvaliableCars/ListAvailableCarsController'
-import { CreateCarSpecificationController } from '@modules/cars/useCases/createCarSpecification/CreateCarSpecificationController'
-import { UploadCarImagesController } from '@modules/cars/useCases/uploadCarImages/UploadCarImagesController'
-
 const carsRoutes = Router()
 
-const upload = multer(uploadConfig.upload('./tmp/cars'))
-
-const createCategoryController = new CreateCarController()
-const listAvailableCarsUseCase = new ListAvailableCarsController()
+const createCarController = new CreateCarController()
+const listAvailableCarsController = new ListAvailableCarsController()
 const createCarSpecificationController = new CreateCarSpecificationController()
 const uploadCarImagesController = new UploadCarImagesController()
+
+const upload = multer(uploadConfig)
 
 carsRoutes.post(
     '/',
     ensureAuthenticated,
     ensureAdmin,
-    createCategoryController.handle
+    createCarController.handle
 )
 
-carsRoutes.get('/avaliable', listAvailableCarsUseCase.handle)
+carsRoutes.get('/available', listAvailableCarsController.handle)
 
 carsRoutes.post(
     '/specifications/:id',

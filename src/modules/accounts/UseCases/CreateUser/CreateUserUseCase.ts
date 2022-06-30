@@ -1,13 +1,12 @@
-import { inject, injectable } from 'tsyringe';
+import { inject, injectable } from 'tsyringe'
 import { hash } from 'bcryptjs'
 
-import { IUsersRepository } from '../../repositories/IUsersRepository';
+import { IUsersRepository } from '../../repositories/IUsersRepository'
 import { ICreateUserDTO } from '../../dtos/ICreateUserDTO'
 import { AppError } from '@shared/errors/AppError'
 
 @injectable()
 class CreateUserUseCase {
-    
     constructor(
         @inject('UsersRepository')
         private usersRepository: IUsersRepository
@@ -31,7 +30,6 @@ class CreateUserUseCase {
             driver_license
         })
     }
-
 }
 
 export { CreateUserUseCase }

@@ -9,7 +9,7 @@ import { UpdateUserAvatarController } from '@modules/accounts/UseCases/UpdateUse
 
 const usersRouters = Router()
 
-const uploadAvatar = multer(uploadConfig.upload('./tmp/avatar'))
+const uploadAvatar = multer(uploadConfig)
 
 const createUserController = new CreateUserController()
 const updateUserAvatarController = new UpdateUserAvatarController()
@@ -19,7 +19,7 @@ usersRouters.post('/', createUserController.handle)
 usersRouters.patch(
     '/avatar',
     ensureAuthenticated,
-    uploadAvatar.single('avatar'), 
+    uploadAvatar.single('avatar'),
     updateUserAvatarController.handle
 )
 

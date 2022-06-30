@@ -1,7 +1,7 @@
 import { Connection, createConnection, getConnectionOptions } from 'typeorm'
 
 interface IOptions {
-  host: string;
+    host: string
 }
 
 export default async (host = 'database'): Promise<Connection> => {
@@ -12,4 +12,4 @@ export default async (host = 'database'): Promise<Connection> => {
             host //Essa opção deverá ser EXATAMENTE o nome dado ao service do banco de dados
         })
     )
-} 
+}

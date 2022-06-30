@@ -12,7 +12,8 @@ let specificationsRepositoryInMemory: SpecificationsRepositoryInMemory
 describe('Create Car Specification', () => {
     beforeEach(() => {
         carsRepositoryInMemory = new CarsRepositoryInMemory()
-        specificationsRepositoryInMemory = new SpecificationsRepositoryInMemory()
+        specificationsRepositoryInMemory =
+            new SpecificationsRepositoryInMemory()
         createCarSpecificationUseCase = new CreateCarSpecificationUseCase(
             carsRepositoryInMemory,
             specificationsRepositoryInMemory
@@ -24,10 +25,10 @@ describe('Create Car Specification', () => {
         const specifications_id = ['54321']
 
         await expect(
-        createCarSpecificationUseCase.execute({
-            car_id,
-            specifications_id,
-        })
+            createCarSpecificationUseCase.execute({
+                car_id,
+                specifications_id
+            })
         ).rejects.toEqual(new AppError('Car does not exists!'))
     })
 
@@ -39,19 +40,19 @@ describe('Create Car Specification', () => {
             license_plate: 'ABC-1234',
             fine_amount: 60,
             brand: 'Brand',
-            category_id: 'category',
+            category_id: 'category'
         })
 
         const specification = await specificationsRepositoryInMemory.create({
             description: 'test',
-            name: 'test',
+            name: 'test'
         })
 
         const specifications_id = [specification.id]
 
         const specificationsCars = await createCarSpecificationUseCase.execute({
             car_id: car.id,
-            specifications_id,
+            specifications_id
         })
 
         expect(specificationsCars).toHaveProperty('specifications')

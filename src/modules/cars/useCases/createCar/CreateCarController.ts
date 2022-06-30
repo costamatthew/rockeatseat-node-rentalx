@@ -4,9 +4,8 @@ import { container } from 'tsyringe'
 import { CreateCarUseCase } from './CreateCarUseCase'
 
 class CreateCarController {
-
     async handle(request: Request, response: Response): Promise<Response> {
-        const {  
+        const {
             name,
             description,
             daily_rate,
@@ -30,7 +29,6 @@ class CreateCarController {
 
         return response.status(201).json(car)
     }
-
 }
 
 export { CreateCarController }
